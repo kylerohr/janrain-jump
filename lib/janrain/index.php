@@ -53,6 +53,6 @@ loadHead($module->getSettingsHeadJs());
 loadHead($module->getEndHeadJs());
 loadHead("</script>");
 loadContent("<div>");
-loadContent($module->getWidgetBody());
+loadContent($module->getHtml());
 loadContent("</div>");
 echo str_replace(array('{{bodyinject}}', '{{headerinject}}'), '', $PAGE);
