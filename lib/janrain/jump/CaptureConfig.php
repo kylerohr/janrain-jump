@@ -18,4 +18,6 @@ class CaptureConfig extends ArrayObject implements CaptureConfigInterface {
 		}
 		return null;
 	}
+
+	public function set($optionName, $value) {}
 }

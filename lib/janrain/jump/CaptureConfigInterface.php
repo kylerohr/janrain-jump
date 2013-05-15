@@ -1,6 +1,4 @@
 <?php
 namespace janrain\jump;
 
-interface CaptureConfigInterface {
-	public function get($optionName);
-}
+interface CaptureConfigInterface extends ConfigInterface {}
