@@ -1,7 +1,9 @@
 <?php
 namespace janrain\jump;
 
-class Capture implements \janrain\plex\PlexInterface {
+use janrain\plex\RenderableInterface as RenderableInterface;
+
+class Capture implements RenderableInterface {
 
 	protected $clientId;
 	protected $captureName;
@@ -29,16 +31,17 @@ class Capture implements \janrain\plex\PlexInterface {
 
 	public function getSettingsHeadJs() {
 		$out = "\n//Start Janrain Settings
-			janrain.settings.capture.appId = '{$this->captureId}';
-			janrain.settings.capture.clientId = '{$this->clientId}';
-			janrain.settings.capture.captureServer = 'https://{$this->captureName}.janraincapture.com';
-			janrain.settings.capture.recaptchaPublicKey = '6LeVKb4SAAAAAGv-hg5i6gtiOV4XrLuCDsJOnYoP';
-			janrain.settings.packages.push('capture');
-			janrain.settings.capture.redirectUri = 'http://raw.lvm/';
-			janrain.settings.capture.loadJsUrl = 'd16s8pqtk4uodx.cloudfront.net/{$this->engageName}/load.js';
-			janrain.settings.capture.flowName = 'plugins';
-			janrain.settings.capture.registerFlow = 'socialRegistration';
-			janrain.settings.capture.responseType = 'code';
+            janrain.settings.packages.push('capture');
+            var captureOpts = janrain.settings.capture;
+			captureOpts.appId = '{$this->captureId}';
+			captureOpts.clientId = '{$this->clientId}';
+			captureOpts.captureServer = 'https://{$this->captureName}.janraincapture.com';
+			captureOpts.recaptchaPublicKey = '6LeVKb4SAAAAAGv-hg5i6gtiOV4XrLuCDsJOnYoP';
+			captureOpts.redirectUri = 'http://raw.lvm/';
+			captureOpts.loadJsUrl = 'd16s8pqtk4uodx.cloudfront.net/{$this->engageName}/load.js';
+			captureOpts.flowName = 'plugins';
+			captureOpts.registerFlow = 'socialRegistration';
+			captureOpts.responseType = 'code';
 			janrain.settings.tokenUrl = 'http://raw.lvm/index.php';
 			janrain.settings.tokenAction = 'event';
 			//End Janrain Settings\n";
@@ -67,6 +70,10 @@ class Capture implements \janrain\plex\PlexInterface {
 					function (result) {
 						alert('Success: this is your token ' + result.authorizationCode);
 					});
+                janrain.events.onCaptureRegistrationSuccess.addHandler(
+                    function () {
+                        console.log('Registration Success!');
+                    });
 				janrain.capture.ui.start();				
  			}\n";
 		return $out;
@@ -80,7 +87,7 @@ class Capture implements \janrain\plex\PlexInterface {
 	public function getCss() {
 		return '';
 	}
-	public function getWidgetBody() {
+	public function getHtml() {
 		return
 			"<a href='#' class='capture_modal_open'>Sign In</a>
 			<div style='display:none;' id='signIn'>
