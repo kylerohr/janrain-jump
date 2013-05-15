@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<layout version="0.0.1">
+    <default>
+        <reference name="head">
+            <block type="core/template"
+                name="janrain_captureui_header"
+        template="janrain/captureui/header.phtml"/>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template"
+        name="janrain_captureui_footer"
+        template="janrain/captureui/footer.phtml"/>
+        </reference>
+    </default>
+
+    <customer_logged_out>
+    	<reference name="head">
+    		<block type="core/template" name="janrain_capture_widget_header"
+    			template="janrain/capture_widget/header.phtml" />
+    	</reference>
+    </customer_logged_out>
+</layout>
