@@ -25,23 +25,23 @@ class Capture implements RenderableInterface {
 			if (typeof window.janrain !== 'object') window.janrain = {};
 			if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
 			if (typeof window.janrain.settings.packages !== 'object') window.janrain.settings.packages = [];
-			if (typeof window.janrain.settings.capture !== 'object') window.janrain.settings.capture = {};\n";
+			if (typeof window.janrain.settings.capture !== 'object') window.janrain.settings.capture = {};
+            janrain.settings.packages.push('capture');\n";
 		return $out;
 	}
 
 	public function getSettingsHeadJs() {
 		$out = "\n//Start Janrain Settings
-            janrain.settings.packages.push('capture');
             var captureOpts = janrain.settings.capture;
 			captureOpts.appId = '{$this->captureId}';
 			captureOpts.clientId = '{$this->clientId}';
 			captureOpts.captureServer = 'https://{$this->captureName}.janraincapture.com';
 			captureOpts.recaptchaPublicKey = '6LeVKb4SAAAAAGv-hg5i6gtiOV4XrLuCDsJOnYoP';
-			captureOpts.redirectUri = 'http://raw.lvm/';
+			captureOpts.redirectUri = document.location.href;
 			captureOpts.loadJsUrl = 'd16s8pqtk4uodx.cloudfront.net/{$this->engageName}/load.js';
 			captureOpts.flowName = 'plugins';
 			captureOpts.registerFlow = 'socialRegistration';
-			captureOpts.responseType = 'code';
+			captureOpts.responseType = 'token';
 			janrain.settings.tokenUrl = 'http://raw.lvm/index.php';
 			janrain.settings.tokenAction = 'event';
 			//End Janrain Settings\n";
@@ -68,11 +68,18 @@ class Capture implements RenderableInterface {
 			function janrainCaptureWidgetOnLoad() {
 				janrain.events.onCaptureLoginSuccess.addHandler(
 					function (result) {
-						alert('Success: this is your token ' + result.authorizationCode);
+						alert('Success: this is your token ' + result.accessToken);
+                        janrain.capture.ui.modal.close();
 					});
+                janrain.events.onCaptureLoginFailed.addHandler(
+                    function () {
+                        console.log('Sign in failure!');
+                        janrain.capture.ui.modal.close();
+                    });
                 janrain.events.onCaptureRegistrationSuccess.addHandler(
                     function () {
                         console.log('Registration Success!');
+                        janrain.capture.ui.modal.close();
                     });
 				janrain.capture.ui.start();				
  			}\n";
@@ -85,7 +92,7 @@ class Capture implements RenderableInterface {
 			);
 	}
 	public function getCss() {
-		return '';
+		return file_get_contents(__DIR__ . '/../plex/styles.css');
 	}
 	public function getHtml() {
 		return

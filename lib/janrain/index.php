@@ -43,7 +43,7 @@ $module = new janrain\jump\Capture($config);
 foreach ($module->getCssHrefs() as $href) {
 	loadHead("<link rel='stylesheet' type='text/css' href='{$href}'/>");
 }
-loadHead($module->getCss());
+loadHead("<style>{$module->getCss()}</style>");
 foreach ($module->getJsSrcs() as $src) {
 	loadHead("<script type='text/javascript' src='{$src}'></script>");
 }
