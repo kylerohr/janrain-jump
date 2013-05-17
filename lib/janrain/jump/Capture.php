@@ -14,6 +14,7 @@ class Capture implements RenderableInterface {
 		$this->captureName = $config->get('capture.name');
 		$this->engageName = $config->get('engage.name');
 		$this->captureId = $config->get('capture.id');
+        $this->tokenUrl = $config->get('engage.tokenUrl');
 	}
 
 	public function getJsSrcs() {
@@ -42,7 +43,7 @@ class Capture implements RenderableInterface {
 			captureOpts.flowName = 'plugins';
 			captureOpts.registerFlow = 'socialRegistration';
 			captureOpts.responseType = 'token';
-			janrain.settings.tokenUrl = 'http://raw.lvm/index.php';
+			janrain.settings.tokenUrl = '{$this->tokenUrl}';
 			janrain.settings.tokenAction = 'event';
 			//End Janrain Settings\n";
 		return $out;

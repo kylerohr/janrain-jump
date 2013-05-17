@@ -11,6 +11,7 @@ class CaptureConfig extends ArrayObject implements CaptureConfigInterface {
 		$this['capture.name'] = $data['captureName'];
 		$this['engage.name'] = $data['engageName'];
 		$this['capture.id'] = $data['captureAppId'];
+		$this['engage.tokenUrl'] = $data['tokenUrl'];
 	}
 	public function get($optionName) {
 		if ($this->offsetExists($optionName)) {
