@@ -10,7 +10,7 @@
         <layout>
             <updates>
                 <jump>
-                    <file>layout.xml</file>
+                    <file>jump.xml</file>
                 </jump>
             </updates>
         </layout>
