@@ -3,7 +3,7 @@
     <default>
         <reference name="root">
             <reference name="content">
-                <block type="core/template" name="header" template="jump/header.phtml" before="-"/>
+                <block type="core/template" name="header" template="janrain/jump/header.phtml" before="-"/>
             </reference>
         </reference>
     </default>
