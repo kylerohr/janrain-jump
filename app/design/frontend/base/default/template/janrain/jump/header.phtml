@@ -1,1 +1,21 @@
-<?php echo "Hello world!"; ?>
+<?php
+require_once(Mage::getBaseDir('lib') . '/janrain/plex/RenderableInterface.php');
+require_once(Mage::getBaseDir('lib') . '/janrain/jump/ConfigInterface.php');
+require_once(Mage::getBaseDir('lib') . '/janrain/jump/CaptureConfigInterface.php');
+require_once(Mage::getBaseDir('lib') . '/janrain/jump/CaptureConfig.php');
+require_once(Mage::getBaseDir('lib') . '/janrain/jump/Capture.php');
+
+$config = array('clientId' => '',
+				'captureName' => '',
+				'engageName' => '',
+				'captureAppId' => '');
+
+
+
+$captureConfig = new janrain\jump\CaptureConfig($config);
+
+$capture = new janrain\jump\Capture($captureConfig);
+
+echo $capture->getStartHeadJs();
+
+?>
