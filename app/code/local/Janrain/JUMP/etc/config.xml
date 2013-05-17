@@ -22,5 +22,11 @@
                 <class>Janrain_JUMP_Header_Block</class>
             </jump>
         </blocks>
+
+        <models>
+            <janrain_jump>
+                <class>Janrain_JUMP_Model</class>
+            </janrain_jump>
+        </models>
     </global>
 </config>

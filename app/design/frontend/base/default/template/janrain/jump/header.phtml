@@ -5,17 +5,35 @@ require_once(Mage::getBaseDir('lib') . '/janrain/jump/CaptureConfigInterface.php
 require_once(Mage::getBaseDir('lib') . '/janrain/jump/CaptureConfig.php');
 require_once(Mage::getBaseDir('lib') . '/janrain/jump/Capture.php');
 
-$config = array('clientId' => '',
-				'captureName' => '',
-				'engageName' => '',
-				'captureAppId' => '');
+$configModel = Mage::getModel('janrain_jump/config');
 
-
+$config = $configModel->getConfig();
 
 $captureConfig = new janrain\jump\CaptureConfig($config);
 
 $capture = new janrain\jump\Capture($captureConfig);
 
+// JavaScript Headers
+?>
+<script type="text/javascript">
+<?php
 echo $capture->getStartHeadJs();
+echo $capture->getSettingsHeadJs();
+echo $capture->getEndHeadJs();
+?>
+</script>
+
+<?php
+// CSS
+$cssHrefs = $capture->getCssHrefs();
+
+foreach ($cssHrefs as $href) {
+	echo '<link rel="stylesheet" type="text/css" src="' . $href . '" />';
+}
 
 ?>
+<style>
+<?php
+echo $capture->getCss();
+?>
+</style>
