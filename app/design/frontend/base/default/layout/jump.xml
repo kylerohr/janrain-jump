@@ -4,11 +4,10 @@
     	<reference name="head">
 	    	<block type="core/template" name="header" template="janrain/jump/header.phtml" before="-"/>
 	    </reference>
-	    <reference name="content">
-	    	<block type="core/template" name="widget" template="janrain/jump/widget.phtml" before="-"/>
-	    </reference>
     </default>
     <customer_logged_out>
-    	
+    	<reference name="content">
+	    	<block type="core/template" name="widget" template="janrain/jump/widget.phtml" before="-"/>
+	    </reference>
     </customer_logged_out>
 </layout>
