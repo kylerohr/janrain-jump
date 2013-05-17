@@ -1,16 +1,7 @@
 <?php
-namespace janrain;
-class PsrLoader {
-
-	public function loadClass($className) {
-				
-	}
-
-	private static $instance;
-	public static function instance() {
-		if (is_null(self::$instance)) {
-			self::$instance = new self();
+spl_autoload_register(
+	function ($className) {
+		if ('janrain' == strstr($className, '\\', true)) {
+			require_once dirname(__DIR__) . '/' . str_replace('\\', '/', $className) . '.php';
 		}
-		return self::$instance;
-	}
-}
+	}, true, true);
