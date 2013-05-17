@@ -8,6 +8,7 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 		return array('clientId' => '',
 					 'captureName' => '',
 					 'engageName' => '',
-					 'captureAppId' => '');
+					 'captureAppId' => '',
+					 'tokenUrl' => '');
 	}
 }
