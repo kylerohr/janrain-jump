@@ -1,5 +1,5 @@
 <?php
-class Janrain_JUMP_Model_Config extends Varien_Object {
+class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 	function __construct() {
 		parent::__construct();
 	}
