@@ -20,6 +20,7 @@
         <blocks>
             <jump>
                 <class>Janrain_JUMP_Header_Block</class>
+                <class>Janrain_JUMP_Widget_Block</class>
             </jump>
         </blocks>
 
