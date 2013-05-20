@@ -27,7 +27,6 @@
         <models>
             <janrain_jump>
                 <class>Janrain_JUMP_Model</class>
-                <resourceModel>jump_mysql4</resourceModel>
             </janrain_jump>
         </models>
 
