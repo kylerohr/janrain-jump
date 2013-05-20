@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<janrain translate="label" module="janrain_jump">
+			<label>Janrain</label>
+			<sort_order>250</sort_order>
+		</janrain>
+	</tabs>
+	<sections>
+		<jump translate="label" module="janrain_jump">
+			<label>JUMP</label>
+			<tab>janrain</tab>
+			<frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+			<groups>
+				<capture_settings translate="label">
+					<label>Capture Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<capture_app_id translate="label">
+                    		<label>Capture App ID</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                    	</capture_app_id>
+                    </fields>
+				</capture_settings>
+			</groups>
+		</jump>
+	</sections>
+</config>

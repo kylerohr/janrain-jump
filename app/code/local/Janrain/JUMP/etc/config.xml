@@ -27,7 +27,36 @@
         <models>
             <janrain_jump>
                 <class>Janrain_JUMP_Model</class>
+                <resourceModel>jump_mysql4</resourceModel>
             </janrain_jump>
         </models>
+
+        <helpers>
+            <janrain_jump>
+                <class>Janrain_JUMP_Helper</class>
+            </janrain_jump>
+        </helpers>
     </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <jump>
+                                            <title>JUMP</title>
+                                        </jump>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>
