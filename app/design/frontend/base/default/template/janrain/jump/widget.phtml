@@ -10,3 +10,9 @@ $captureConfig = new janrain\jump\CaptureConfig($config);
 $capture = new janrain\jump\Capture($captureConfig);
 
 echo $capture->getHtml();
+
+echo '<hr />';
+
+$test = $configModel->getTestConfig();
+
+echo 'Test config value: ' . $test;
