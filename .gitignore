@@ -1,1 +1,5 @@
 /lib/janrain/index.php
+composer.lock
+/vendor/
+phpunit.xml
+/coverage/
