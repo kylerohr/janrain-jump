@@ -1,1 +1,4 @@
 /lib/janrain/index.php
+/vendor/
+phpunit.xml
+/coverage/
