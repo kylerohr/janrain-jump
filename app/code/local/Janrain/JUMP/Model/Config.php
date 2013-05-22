@@ -6,10 +6,10 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 	}
 
 	function getConfig() {
-		return array('capture.clientId' => '6ktpqgv775wk7grhs5gc6k26z22khx6t',
-					 'capture.captureServer' => 'https://byron.dev.janraincapture.com',
-					 'capture.loadJsUrl' => 'd16s8pqtk4uodx.cloudfront.net/byron-janrain/load.js',
-					 'capture.appId' => '6jreb2yub54ekd3f3a4vymx8wh',
+		return array('capture.clientId' => '',
+					 'capture.captureServer' => '',
+					 'capture.loadJsUrl' => '',
+					 'capture.appId' => '',
 					 'tokenUrl' => '');
 	}
 
