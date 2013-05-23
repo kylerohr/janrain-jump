@@ -2,3 +2,4 @@
 /vendor/
 phpunit.xml
 /coverage/
+.DS_Store
