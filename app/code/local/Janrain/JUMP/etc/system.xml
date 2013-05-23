@@ -24,14 +24,46 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                    	<capture_app_id translate="label">
-                    		<label>Capture App ID</label>
+                    	<capture.clientId translate="label">
+                    		<label>Capture Client ID</label>
                     		<frontend_type>text</frontend_type>
-                    		<sort_order>50</sort_order>
+                    		<sort_order>100</sort_order>
 							<show_in_default>1</show_in_default>
 		                    <show_in_website>1</show_in_website>
 		                    <show_in_store>1</show_in_store>
-                    	</capture_app_id>
+                    	</capture.clientId>
+                    	<capture.captureServer translate="label">
+                    		<label>Capture Server</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>200</sort_order>
+							<show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                    	</capture.captureServer>
+                    	<capture.loadJsURL translate="label">
+                    		<label>Capture load.js URL</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>300</sort_order>
+							<show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                    	</capture.loadJsURL>
+                    	<capture.appId translate="label">
+                    		<label>Capture App ID</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>400</sort_order>
+							<show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                    	</capture.appId>
+                    	<capture.tokenUrl translate="label">
+                    		<label>Capture Token URL</label>
+                    		<frontend_type>text</frontend_type>
+                    		<sort_order>500</sort_order>
+							<show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                    	</capture.tokenUrl>
                     </fields>
 				</capture_settings>
 			</groups>
