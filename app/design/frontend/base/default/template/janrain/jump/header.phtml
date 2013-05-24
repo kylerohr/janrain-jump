@@ -9,6 +9,9 @@ $capture = new janrain\plex\Capture($captureConfig);
 
 // JavaScript Headers
 ?>
+<?php foreach ($capture->getHeadJsSrcs() as $src):?>
+<script type='text/javascript' src='<?php echo $src;?>'></script>
+<?php endforeach;?>
 <script type="text/javascript">
 <?php
 echo $capture->getStartHeadJs();

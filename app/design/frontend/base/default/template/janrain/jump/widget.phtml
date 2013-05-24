@@ -5,11 +5,11 @@ $configModel = Mage::getModel('janrain_jump/config');
 
 // $config = $configModel->getConfig();
 
-// $captureConfig = new janrain\plex\CaptureConfig($config);
+ $captureConfig = new janrain\plex\CaptureConfig($configModel->getConfig());
 
-// $capture = new janrain\plex\Capture($captureConfig);
+ $capture = new janrain\plex\Capture($captureConfig);
 
-// echo $capture->getHtml();
+ echo $capture->getHtml();
 
 echo '<hr />';
 
