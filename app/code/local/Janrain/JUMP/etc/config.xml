@@ -44,6 +44,17 @@
                 <class>Janrain_JUMP_Helper</class>
             </janrain_jump>
         </helpers>
+
+        <resources>
+            <jump_setup>
+                <setup>
+                    <module>Janrain_JUMP</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </jump_setup>
+        </resources>
     </global>
 
     <adminhtml>

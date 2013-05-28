@@ -11,6 +11,7 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 			'capture.captureServer' => '',
 			'capture.loadJsUrl' => '',
 			'capture.appId' => '',
+			'jumpUrl' => '',
 			);
 	}
 
@@ -20,7 +21,9 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 		$config = array();
 
 		foreach ($keys as $key => $value) {
-			$config[$key] = Mage::getStoreConfig('jump/capture_settings/' . $key);
+			$setting = Mage::getStoreConfig('jump/capture_settings/' . $key);
+			
+			$config[$key] = $setting ? $setting : '';
 		}
 
 		return $config;
