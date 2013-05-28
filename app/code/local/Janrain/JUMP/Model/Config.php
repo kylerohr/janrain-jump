@@ -6,11 +6,12 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 	}
 
 	function getConfigKeys() {
-		return array('capture.clientId' => '',
-					 'capture.captureServer' => '',
-					 'capture.loadJsUrl' => '',
-					 'capture.appId' => '',
-					 'tokenUrl' => '');
+		return array(
+			'capture.clientId' => '',
+			'capture.captureServer' => '',
+			'capture.loadJsUrl' => '',
+			'capture.appId' => '',
+			);
 	}
 
 	function getConfig() {
