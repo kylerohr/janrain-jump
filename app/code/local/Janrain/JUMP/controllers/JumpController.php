@@ -10,6 +10,12 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 
 	private function _processToken($token)
 	{
-		echo $token;
+		$uuid = Mage::app()->getRequest()->getParam('uuid');
+		$config = Mage::getModel('janrain_jump/config');
+		$configAO = new \ArrayObject($config->getConfig());
+		$api = new janrain\jump\Api($configAO);
+		$user = $api->fetchUserByUuid($uuid, $token);
+		//var_dump($user);
+		//echo $token;
 	}
 }
