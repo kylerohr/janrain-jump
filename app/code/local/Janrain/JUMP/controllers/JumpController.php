@@ -15,7 +15,15 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		$configAO = new \ArrayObject($config->getConfig());
 		$api = new janrain\jump\Api($configAO);
 		$user = $api->fetchUserByUuid($uuid, $token);
-		//var_dump($user);
+		var_dump($user);
 		//echo $token;
+	}
+
+	private function __registerUser($token, $uuid) {
+		
+	}
+
+	private function __loginUser($token, $uuid) {
+
 	}
 }

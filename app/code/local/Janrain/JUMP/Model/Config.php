@@ -26,7 +26,7 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 
 			$config[$key] = $setting ? $setting : '';
 		}
-
+		
 		return $config;
 	}
 

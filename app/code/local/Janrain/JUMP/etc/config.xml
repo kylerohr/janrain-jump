@@ -54,6 +54,16 @@
                     <use>core_setup</use>
                 </connection>
             </jump_setup>
+            <jump_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </jump_write>
+            <jump_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </jump_read>
         </resources>
     </global>
 
