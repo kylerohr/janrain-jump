@@ -18,10 +18,10 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		//var_dump($user);
 		//echo $token;
 
-		$this->registerUser($user);
+		$this->loginUser($user);
 	}
 
-	protected function registerUser($user) {
+	protected function loginUser($user) {
 		$customer = Mage::getModel('customer/customer');
 		$customer->setWebsiteId(Mage::app()->getWebsite()->getId());
 
@@ -37,9 +37,5 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 
 		// @TODO: Add entry in jump table with UUID
 		// @TODO: Call loginUser()
-	}
-
-	protected function loginUser($user) {
-
 	}
 }
