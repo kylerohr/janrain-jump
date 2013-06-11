@@ -14,3 +14,7 @@ echo '<hr />';
 $test = $configModel->getTestConfig();
 
 echo 'Test config value: ' . $test;
+
+echo "<hr />";
+$blogpost = Mage::getModel('janrain_jump/user');
+echo get_class($blogpost);

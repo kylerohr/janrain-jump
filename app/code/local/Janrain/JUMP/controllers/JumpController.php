@@ -25,6 +25,8 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		$customer = Mage::getModel('customer/customer');
 		$customer->setWebsiteId(Mage::app()->getWebsite()->getId());
 
+		// @TODO: Verify Janrain login information first
+
 		$email = $user->email;
 		$customer->loadByEmail($email);
 
