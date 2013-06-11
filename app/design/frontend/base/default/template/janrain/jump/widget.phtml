@@ -1,5 +1,5 @@
 <?php
-$configModel = Mage::getModel('janrain_jump/config');
+$configModel = Mage::getModel('jump/config');
 
 // $config = $configModel->getConfig();
 
@@ -16,7 +16,10 @@ $test = $configModel->getTestConfig();
 echo 'Test config value: ' . $test;
 
 echo "<hr />";
-$user = Mage::getModel('janrain_jump/user');
+$user = Mage::getModel('jump/user');
+var_dump($user);
 echo get_class($user);
 
-
+$user->setCustomerId(1);
+$user->setUuid('12345');
+$user->save();

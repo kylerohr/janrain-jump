@@ -34,9 +34,18 @@
         </blocks>
 
         <models>
-            <janrain_jump>
+            <jump>
                 <class>Janrain_JUMP_Model</class>
-            </janrain_jump>
+                <resourceModel>jump_mysql4</resourceModel>
+            </jump>
+            <jump_mysql4>
+                <class>Janrain_JUMP_Model_Mysql4</class>
+                <entities>
+                    <janrain_jump>
+                        <table>janrain_jump</table>
+                    </janrain_jump>
+                </entities>
+            </jump_mysql4>
         </models>
 
         <helpers>
