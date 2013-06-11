@@ -2,7 +2,6 @@
 import glob
 import os
 import subprocess
-from subprocess import call
 
 from argparse import ArgumentParser
 
@@ -17,7 +16,7 @@ print options.magento_path
 current_dir = os.getcwd()
 
 if not os.path.exists("%s/app/code/local" % options.magento_path):
-	call(["mkdir", "%s/app/code/local" % options.magento_path])
+	os.mkdir("%s/app/code/local" % options.magento_path)
 
 def symlinker(source, dest):
 	if os.path.isdir(source):
@@ -37,9 +36,3 @@ symlinker("%s/app/design/frontend/base/default/layout" % current_dir, "%s/app/de
 symlinker("%s/app/design/frontend/base/default/template" % current_dir, "%s/app/design/frontend/base/default/template/" % options.magento_path)
 symlinker("%s/app/etc/modules" % current_dir, "%s/app/etc/modules/" % options.magento_path)
 os.symlink("%s/vendor/janrain/plex/lib/janrain" % current_dir, "%s/lib/janrain" % options.magento_path)
-
-#call(["ln", "-sf", "%s/app/code/local/*" % current_dir, "-t", "%s/app/code/local" % options.magento_path])
-#call(["ln", "-sf", "%s/app/design/frontend/base/default/layout/*" % current_dir, "-t", "%s/app/design/frontend/base/default/layout" % options.magento_path])
-#call(["ln", "-sf", "%s/app/design/frontend/base/default/template/*" % current_dir, "-t", "%s/app/design/frontend/base/default/template" % options.magento_path])
-#call(["ln", "-sf", "%s/app/etc/modules/*" % current_dir, "-t", "%s/app/etc/modules" % options.magento_path])
-#call(["ln", "-sf", "%s/vendor/janrain/plex/lib/janrain" % current_dir, "-t", "%s/lib" % options.magento_path])
