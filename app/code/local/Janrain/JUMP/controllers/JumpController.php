@@ -15,8 +15,6 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		$configAO = new \ArrayObject($config->getConfig());
 		$api = new janrain\jump\Api($configAO);
 		$user = $api->fetchUserByUuid($uuid, $token);
-		//var_dump($user);
-		//echo $token;
 
 		$this->loginUser($user);
 	}
@@ -30,6 +28,7 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		$email = $user->email;
 		$customer->loadByEmail($email);
 
+		// Create the customer if necessary and add a record to link to Capture
 		if (!$customer->getId()) {
 			$customer->setEmail($email);
 			$customer->setPassword($customer->generatePassword(16));
@@ -44,6 +43,7 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 			$jump_user->save();
 		}
 		
-		// @TODO: Call loginUser()
+		// Log the customer into the site
+		Mage::getSingleton('customer/session')->loginById($customer->getId());
 	}
 }
