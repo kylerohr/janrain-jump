@@ -45,5 +45,8 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 		
 		// Log the customer into the site
 		Mage::getSingleton('customer/session')->loginById($customer->getId());
+
+		// Redirect to the customer account page
+		$this->_redirect('customer/account');
 	}
 }
