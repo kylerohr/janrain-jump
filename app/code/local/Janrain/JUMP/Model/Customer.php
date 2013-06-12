@@ -10,10 +10,12 @@ class Janrain_JUMP_Model_Customer extends Mage_Customer_Model_Customer {
 	function getUuid() {
 		$customer_id = $this->getId();
 
-
+    // @TODO: Flesh out getUuid()
 	}
 
 	function save() {
 		parent::save();
+
+    // @TODO: Add save overrides
 	}
 }
