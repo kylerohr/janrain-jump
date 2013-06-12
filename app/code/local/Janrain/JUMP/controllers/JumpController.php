@@ -11,7 +11,7 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 	protected function processToken($token)
 	{
 		$uuid = Mage::app()->getRequest()->getParam('uuid');
-		$config = Mage::getModel('janrain_jump/config');
+		$config = Mage::getModel('jump/config');
 		$configAO = new \ArrayObject($config->getConfig());
 		$api = new janrain\jump\Api($configAO);
 		$user = $api->fetchUserByUuid($uuid, $token);
@@ -35,9 +35,15 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 			$customer->setPassword($customer->generatePassword(16));
 			// @TODO: Set confirmed? Is this necessary?
 			$customer->save();
-		}
 
-		// @TODO: Add entry in jump table with UUID
+			// Add UUID to the janrain_jump table
+			$jump_user = Mage::getModel('jump/user');
+
+			$jump_user->setCustomerId($customer->getId());
+			$jump_user->setUuid($user->getUuid());
+			$jump_user->save();
+		}
+		
 		// @TODO: Call loginUser()
 	}
 }
