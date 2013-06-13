@@ -18,6 +18,7 @@
 			<groups>
 				<capture_settings translate="label">
 					<label>Capture Settings</label>
+					<expanded>1</expanded>
 					<frontend_type>text</frontend_type>
 					<sort_order>50</sort_order>
 					<show_in_default>1</show_in_default>
@@ -50,6 +51,35 @@
 						</capture.appId>
 					</fields>
 				</capture_settings>
+				<capture_import_export translate="label">
+					<label>Import and Export Configuration</label>
+					<expanded>1</expanded>
+					<frontend_type>text</frontend_type>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<capture.exportConfig translate="label">
+							<label>Export Configuration</label>
+							<frontend_type>button</frontend_type>
+							<frontend_model>jump/admin_export</frontend_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</capture.exportConfig>
+						<capture.import translate="label">
+							<label>Import Configuration</label>
+							<frontend_type>file</frontend_type>
+							<backend_model>adminhtml/system_config_backend_file</backend_model>
+							<sort_order>200</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</capture.import>
+					</fields>
+				</capture_import_export>
 			</groups>
 		</jump>
 	</sections>
