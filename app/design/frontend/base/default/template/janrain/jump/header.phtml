@@ -1,10 +1,25 @@
 <?php
+require Mage::getBaseDir('lib') . '/janrain/PsrAutoloader.php';
+
 $configModel = Mage::getModel('jump/config');
 
 $config = $configModel->getConfig();
-$captureConfig = new janrain\plex\CaptureConfig($config);
-$capture = new janrain\plex\Capture($captureConfig);
 
+//$jump = Core::buildJumpFromConfig($config);
+
+use janrain\plex\Core;
+$featuresToBuild = 'janrain\\plex\\capture\\Capture,';
+$rawConfig = $config;
+$jump = Core::buildJumpWithConfig($featuresToBuild, $rawConfig);
+
+//$coreConfig = new janrain\plex\Core\CoreConfig($config);
+//$core = new janrain\plex\Core($coreConfig);
+//$captureConfig = new janrain\plex\capture\CaptureConfig($config);
+
+//$capture = new janrain\plex\capture\Capture($captureConfig);
+//$core->pushFeature($capture);
+
+$capture = $jump;
 // JavaScript Headers
 ?>
 <?php foreach ($capture->getHeadJsSrcs() as $src):?>

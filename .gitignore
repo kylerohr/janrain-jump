@@ -3,3 +3,4 @@
 phpunit.xml
 /coverage/
 .DS_Store
+composer.lock

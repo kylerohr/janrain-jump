@@ -1,11 +1,13 @@
 <?php
+require Mage::getBaseDir('lib') . '/janrain/PsrAutoloader.php';
+
 $configModel = Mage::getModel('jump/config');
 
 // $config = $configModel->getConfig();
 
- $captureConfig = new janrain\plex\CaptureConfig($configModel->getConfig());
+ $captureConfig = new janrain\plex\capture\CaptureConfig($configModel->getConfig());
 
- $capture = new janrain\plex\Capture($captureConfig);
+ $capture = new janrain\plex\capture\Capture($captureConfig);
 
  echo $capture->getHtml();
 
