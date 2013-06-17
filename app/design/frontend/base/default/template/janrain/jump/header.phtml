@@ -9,33 +9,25 @@ $config = $configModel->getConfig();
 
 use janrain\plex\Core;
 $featuresToBuild = 'janrain\\plex\\capture\\Capture,';
-$rawConfig = $config;
-$jump = Core::buildJumpWithConfig($featuresToBuild, $rawConfig);
+//$rawConfig = $config;
+$jump = Core::buildJumpWithConfig($featuresToBuild, $config);
 
-//$coreConfig = new janrain\plex\Core\CoreConfig($config);
-//$core = new janrain\plex\Core($coreConfig);
-//$captureConfig = new janrain\plex\capture\CaptureConfig($config);
-
-//$capture = new janrain\plex\capture\Capture($captureConfig);
-//$core->pushFeature($capture);
-
-$capture = $jump;
 // JavaScript Headers
 ?>
-<?php foreach ($capture->getHeadJsSrcs() as $src):?>
+<?php foreach ($jump->getHeadJsSrcs() as $src):?>
 <script type='text/javascript' src='<?php echo $src;?>'></script>
 <?php endforeach;?>
 <script type="text/javascript">
 <?php
-echo $capture->getStartHeadJs();
-echo $capture->getSettingsHeadJs();
-echo $capture->getEndHeadJs();
+echo $jump->getStartHeadJs();
+echo $jump->getSettingsHeadJs();
+echo $jump->getEndHeadJs();
 ?>
 </script>
 
 <?php
 // CSS
-$cssHrefs = $capture->getCssHrefs();
+$cssHrefs = $jump->getCssHrefs();
 
 foreach ($cssHrefs as $href) {
 	echo '<link rel="stylesheet" type="text/css" src="' . $href . '" />';
@@ -44,6 +36,6 @@ foreach ($cssHrefs as $href) {
 ?>
 <style>
 <?php
-echo $capture->getCss();
+echo $jump->getCss();
 ?>
 </style>

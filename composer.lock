@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/byron-janrain/jump-core.git",
-                "reference": "8e8eae0e696307dc5eb112e797c9346b451f69c4"
+                "reference": "e52397fc25fa79584fc9305ed3baf01beee90182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/byron-janrain/jump-core/zipball/8e8eae0e696307dc5eb112e797c9346b451f69c4",
-                "reference": "8e8eae0e696307dc5eb112e797c9346b451f69c4",
+                "url": "https://api.github.com/repos/byron-janrain/jump-core/zipball/e52397fc25fa79584fc9305ed3baf01beee90182",
+                "reference": "e52397fc25fa79584fc9305ed3baf01beee90182",
                 "shasum": ""
             },
             "require": {
@@ -37,7 +37,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "time": "2013-06-11 22:25:41"
+            "time": "2013-06-17 19:57:02"
         },
         {
             "name": "psr/log",
