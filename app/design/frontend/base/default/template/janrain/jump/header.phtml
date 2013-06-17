@@ -8,7 +8,7 @@ $config = $configModel->getConfig();
 //$jump = Core::buildJumpFromConfig($config);
 
 use janrain\plex\Core;
-$featuresToBuild = 'janrain\\plex\\capture\\Capture,';
+$featuresToBuild = 'Capture,';
 //$rawConfig = $config;
 $jump = Core::buildJumpWithConfig($featuresToBuild, $config);
 
