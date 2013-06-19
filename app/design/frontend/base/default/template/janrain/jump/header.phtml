@@ -5,12 +5,8 @@ $configModel = Mage::getModel('jump/config');
 
 $config = $configModel->getConfig();
 
-//$jump = Core::buildJumpFromConfig($config);
-
-use janrain\plex\Core;
-$featuresToBuild = 'Capture,';
-//$rawConfig = $config;
-$jump = Core::buildJumpWithConfig($featuresToBuild, $config);
+$config['features'] = array('Capture');
+$jump = janrain\Jump::getInstance($config);
 
 // JavaScript Headers
 ?>
