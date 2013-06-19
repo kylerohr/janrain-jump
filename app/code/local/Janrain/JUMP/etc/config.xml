@@ -22,6 +22,14 @@
                     <frontName>janrain</frontName>
                 </args>
             </jump>
+            <cms>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <jump before="Mage_Cms">Janrain_JUMP</jump>
+                    </modules>
+                </args>
+            </cms>
         </routers>
     </frontend>
 
