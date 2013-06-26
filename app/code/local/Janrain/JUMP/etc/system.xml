@@ -26,23 +26,31 @@
 					<show_in_store>1</show_in_store>
 					<fields>
 						<capture.clientId translate="label">
-							<label>Capture Client ID</label>
+							<label>Client ID</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>100</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
 						</capture.clientId>
-						<capture.captureServer translate="label">
-							<label>Capture Server</label>
+						<capture.client_secret translate="label">
+							<label>Client Secret</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>200</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
+						</capture.client_secret>
+						<capture.captureServer translate="label">
+							<label>Server</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>300</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
 						</capture.captureServer>
 						<capture.appId translate="label">
-							<label>Capture App ID</label>
+							<label>App ID</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>400</sort_order>
 							<show_in_default>1</show_in_default>
@@ -51,11 +59,54 @@
 						</capture.appId>
 					</fields>
 				</capture_settings>
+				<engage_settings translate="label">
+					<label>Engage Settings</label>
+					<expanded>1</expanded>
+					<frontend_type>text</frontend_type>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<tokenUrl translate="label">
+							<label>Token URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tokenUrl>
+						<appId translate="label">
+							<label>App ID</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>200</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</appId>
+						<appUrl translate="label">
+							<label>App URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>300</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</appUrl>
+						<loadJsUrl translate="label">
+							<label>Load.js URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>400</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</loadJsUrl>
+					</fields>
+				</engage_settings>
 				<capture_import_export translate="label">
 					<label>Import and Export Configuration</label>
 					<expanded>1</expanded>
 					<frontend_type>text</frontend_type>
-					<sort_order>100</sort_order>
+					<sort_order>150</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
 					<show_in_store>1</show_in_store>

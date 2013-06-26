@@ -26,11 +26,23 @@
                 <use>standard</use>
                 <args>
                     <modules>
-                        <jump before="Mage_Cms">Janrain_JUMP</jump>
+                        <Janrain_JUMP before="Mage_Cms">Janrain_JUMP</Janrain_JUMP>
+                        <frontName>jump</frontName>
                     </modules>
                 </args>
             </cms>
         </routers>
+<!--         <events>
+            <cms_page_render>
+                <observers>
+                    <Janrain_JUMP_cms_page_render>
+                        <type>singleton</type>
+                        <class>jump/observer</class>
+                        <method>onCmsRenderPage</method>
+                    </Janrain_JUMP_cms_page_render>
+                </observers>
+            </cms_page_render>
+        </events> -->
     </frontend>
 
     <global>
