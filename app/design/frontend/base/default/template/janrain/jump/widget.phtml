@@ -1,17 +1,19 @@
 <?php
-require Mage::getBaseDir('lib') . '/janrain/PsrAutoloader.php';
+//$configModel = Mage::getModel('jump/config');
+//$config = $configModel->getConfig();
+//$config['features'] = array('Engage');
+$jump = janrain\Jump::getInstance(array());
 
-$configModel = Mage::getModel('jump/config');
-$config = $configModel->getConfig();
-$config['features'] = array('Capture');
-$jump = janrain\Jump::getInstance($config);
-
-echo $jump->getFeature('Capture')->getHtml();
+//echo $jump->getFeature('Capture')->getHtml();
 
 echo '<hr />';
 
-$test = $configModel->getTestConfig();
+//$test = $configModel->getTestConfig();
 
-echo 'Test config value: ' . $test;
+//echo 'Test config value: ' . $test;
 
 echo "<hr />";
+?>
+<?= $jump->getFeature('Capture')->getHtml()?>
+<hr/>
+<?= $jump->getFeature('Engage')->getHtml()?>
