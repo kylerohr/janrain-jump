@@ -15,37 +15,39 @@
             </updates>
         </layout>
         <routers>
-            <jump>
-                <use>standard</use>
-                <args>
-                    <module>Janrain_JUMP</module>
-                    <frontName>janrain</frontName>
-                </args>
-            </jump>
-            <cms>
+            <customer>
                 <use>standard</use>
                 <args>
                     <modules>
-                        <Janrain_JUMP before="Mage_Cms">Janrain_JUMP</Janrain_JUMP>
+                        <Janrain_JUMP before="Mage_Customer_AccountController">Janrain_JUMP</Janrain_JUMP>
+                    </modules>
+                    <frontName>janrain</frontName>
+                </args>
+            </customer>
+            <!--
+            <jump>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <Janrain_JUMP before="Mage_Core">Janrain_JUMP_Jump</Janrain_JUMP>
                         <frontName>jump</frontName>
                     </modules>
                 </args>
-            </cms>
+            </jump>-->
         </routers>
-<!--         <events>
-            <cms_page_render>
-                <observers>
-                    <Janrain_JUMP_cms_page_render>
-                        <type>singleton</type>
-                        <class>jump/observer</class>
-                        <method>onCmsRenderPage</method>
-                    </Janrain_JUMP_cms_page_render>
-                </observers>
-            </cms_page_render>
-        </events> -->
     </frontend>
 
     <global>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <test>
+                        <class>Janrain_JUMP_Model_Observer</class>
+                        <method>cms_page_render</method>
+                    </test>
+                </observers>
+            </controller_action_predispatch>
+        </events>
         <blocks>
             <jump>
                 <class>Janrain_JUMP_Header_Block</class>
