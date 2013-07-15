@@ -1,13 +1,9 @@
 <?php
 $configModel = Mage::getModel('jump/config');
+$config = $configModel->getConfig();
+$config['features'] = array('Capture');
 
-//$config = $configModel->getConfig();
-//$config['features'] = array('Engage');
-$configModel = array_merge(Mage::getStoreConfig('jump/engage_settings'), Mage::getStoreConfig('jump/capture_settings'));
-$configModel['features'] = array('Engage', 'Capture');
-$jump = janrain\Jump::getInstance($configModel);
-
-// JavaScript Headers
+$jump = janrain\Jump::getInstance($config);
 
 echo $jump->raw_render();
 ?>

@@ -1,33 +1,17 @@
 <?php
-require_once Mage::getBaseDir('lib') . '/janrain/PsrAutoloader.php';
-
 class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 
 	function __construct() {
 		parent::__construct();
 	}
 
-	function getConfigKeys() {
-		return array(
-			'capture.clientId',
-			'capture.captureServer',
-			'capture.appId',
-			'jumpUrl',
-			);
-	}
-
 	function getConfig() {
-		$keys = $this->getConfigKeys();
-
-		$config = array();
-
-		foreach ($keys as $key) {
-			$setting = Mage::getStoreConfig('jump/capture_settings/' . $key);
-
-			$config[$key] = $setting ? $setting : '';
+		$out = array();
+		$conf = Mage::getStoreConfig('jump');
+		foreach ($conf as $k => &$v) {
+			$out = array_merge($out, $v);
 		}
-		
-		return $config;
+		return $conf;
 	}
 
 	function getTestConfig() {
