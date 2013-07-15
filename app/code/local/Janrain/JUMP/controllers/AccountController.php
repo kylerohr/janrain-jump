@@ -1,10 +1,37 @@
 <?php
-class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
+require_once 'Mage/Customer/controllers/AccountController.php';
+class Janrain_JUMP_AccountController extends Mage_Customer_AccountController
 {
+	public function preDispatch()
+	{
+		$do = $this->getRequest()->getParam('do');
+		if (empty($do)) {
+			#no janrain actions called, "you didn't see anything"
+			return parent::preDispatch();
+		}
+		#do something
+		$config = Mage::getModel('jump/config');
+		var_dump($config);
+		$api = new \janrain\jump\Api(new \ArrayObject($config));
+		switch ($do) {
+		case 'login':
+			$uuid = $this->getRequest()->getParam('uuid');
+			$token = $this->getRequest()->getParam('token');
+			$api->fetchUserByUuid($uuid, $token);
+			exit();
+		case 'login':
+		default:
+			# we don't know how to handle this action!
+			throw new \MagentoException('boom!');
+		}
+	}
+
 	public function indexAction()
 	{
 		if (isset($_GET['token'])) {
 			$this->processToken($_GET['token']);
+		} else {
+			return call_user_func_array('parent::indexAction', func_get_args());
 		}
 	}
 
@@ -42,7 +69,7 @@ class Janrain_JUMP_JumpController extends Mage_Core_Controller_Front_Action
 			$jump_user->setUuid($user->getUuid());
 			$jump_user->save();
 		}
-		
+
 		// Log the customer into the site
 		Mage::getSingleton('customer/session')->loginById($customer->getId());
 
