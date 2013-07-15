@@ -21,7 +21,6 @@
                     <modules>
                         <Janrain_JUMP before="Mage_Customer_AccountController">Janrain_JUMP</Janrain_JUMP>
                     </modules>
-                    <frontName>janrain</frontName>
                 </args>
             </customer>
             <!--
@@ -36,7 +35,6 @@
             </jump>-->
         </routers>
     </frontend>
-
     <global>
         <events>
             <controller_action_predispatch>
@@ -103,26 +101,4 @@
             </jump_read>
         </resources>
     </global>
-
-    <adminhtml>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <jump>
-                                            <title>JUMP</title>
-                                        </jump>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
-    </adminhtml>
 </config>

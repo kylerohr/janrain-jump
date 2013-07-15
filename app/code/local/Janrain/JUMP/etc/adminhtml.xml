@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <janrain_adminform>
+                                        <title>Janrain JUMP</title>
+                                    </janrain_adminform>
+                                    <jump>
+                                        <title>JUMP</title>
+                                    </jump>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
