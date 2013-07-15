@@ -2,37 +2,12 @@
 $configModel = Mage::getModel('jump/config');
 
 //$config = $configModel->getConfig();
-
-
 //$config['features'] = array('Engage');
 $configModel = array_merge(Mage::getStoreConfig('jump/engage_settings'), Mage::getStoreConfig('jump/capture_settings'));
 $configModel['features'] = array('Engage', 'Capture');
 $jump = janrain\Jump::getInstance($configModel);
 
 // JavaScript Headers
-?>
-<?php foreach ($jump->getHeadJsSrcs() as $src):?>
-<script type='text/javascript' src='<?php echo $src;?>'></script>
-<?php endforeach;?>
-<script type="text/javascript">
-<?php
-echo $jump->getStartHeadJs();
-echo $jump->getSettingsHeadJs();
-echo $jump->getEndHeadJs();
-?>
-</script>
 
-<?php
-// CSS
-$cssHrefs = $jump->getCssHrefs();
-
-foreach ($cssHrefs as $href) {
-	echo '<link rel="stylesheet" type="text/css" src="' . $href . '" />';
-}
-
+echo $jump->raw_render();
 ?>
-<style>
-<?php
-echo $jump->getCss();
-?>
-</style>
