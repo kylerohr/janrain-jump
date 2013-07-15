@@ -3,7 +3,8 @@ $configModel = Mage::getModel('jump/config');
 $config = $configModel->getConfig();
 $config['features'] = array('Capture');
 
-$jump = janrain\Jump::getInstance($config);
+$jump = janrain\Jump::getInstance();
+$jump->init($config);
 
 echo $jump->raw_render();
 ?>

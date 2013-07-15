@@ -11,7 +11,8 @@ class Janrain_JUMP_Model_Config extends Mage_Core_Model_Abstract {
 		foreach ($conf as $k => &$v) {
 			$out = array_merge($out, $v);
 		}
-		return $conf;
+		$out['jumpUrl'] = '/customer/account/';
+		return $out;
 	}
 
 	function getTestConfig() {

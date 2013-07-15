@@ -1,19 +1,4 @@
 <?php
-//$configModel = Mage::getModel('jump/config');
-//$config = $configModel->getConfig();
-//$config['features'] = array('Engage');
-$jump = janrain\Jump::getInstance(array());
-
-//echo $jump->getFeature('Capture')->getHtml();
-
-echo '<hr />';
-
-//$test = $configModel->getTestConfig();
-
-//echo 'Test config value: ' . $test;
-
-echo "<hr />";
+$jump = janrain\Jump::getInstance();
+echo $jump->getFeature('Capture')->getHtml(), '<br/>';
 ?>
-<?= $jump->getFeature('Capture')->getHtml()?>
-<hr/>
-<?= $jump->getFeature('Engage')->getHtml()?>
