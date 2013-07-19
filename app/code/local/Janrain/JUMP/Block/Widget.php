@@ -1,6 +1,10 @@
 <?php
-class Janrain_JUMP_Widget_Block extends Mage_Core_Block_Template
+class Janrain_JUMP_Block_Widget extends Mage_Core_Block_Template
 {
-    // public function _prepareLayout() { return parent::_prepareLayout(); } 
+    public function _toHtml()
+    {
+        $jump = janrain\Jump::getInstance();
+        return $jump->getFeature('Capture')->getHtml() . '<br/>';
+    }
 }
 ?>
