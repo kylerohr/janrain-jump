@@ -19,14 +19,14 @@ $table->addColumn(
     'magento_id',
     Varien_Db_Ddl_Table::TYPE_INTEGER, 10, array('unsigned' => true, 'primary' => true, 'nullable' => false, 'auto_increment' => true));
 $table->addColumn(
-	'plex_id',
-	Varien_Db_Ddl_Table::TYPE_INTEGER, 10, array('unsigned' => true, 'nullable' => false));
+    'plex_id',
+    Varien_Db_Ddl_Table::TYPE_INTEGER, 10, array('unsigned' => true, 'nullable' => false));
 $table->addColumn(
-	'jump_id',
-	Varien_Db_Ddl_Table::TYPE_CHAR,	40, array('nullable' => false));
+    'jump_id',
+    Varien_Db_Ddl_Table::TYPE_CHAR, 40, array('nullable' => false));
 $table->addColumn(
-	'engage_ids',
-	Varien_Db_Ddl_Table::TYPE_TEXT, null, array('nullable' => true));
+    'engage_ids',
+    Varien_Db_Ddl_Table::TYPE_TEXT, null, array('nullable' => true));
 
 #add unique indexes
 $table->addIndex('plex_id', 'plex_id', array('unique'));
