@@ -69,6 +69,7 @@ class Janrain_JUMP_AccountController extends Mage_Customer_AccountController imp
                 $customer = $this->registerCustomerFromJumper($jumper);
             }
             if ($customer) {
+                $this->_getSession()->setData('janrain_jump.session', (object) array('token' => $req->getParam('token'), 'expires' => time() + 50*60));
                 $this->loginCustomer($customer);
             } else {
                 #login and registration failed.

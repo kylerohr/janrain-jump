@@ -18,15 +18,46 @@ class Janrain_JUMP_Model_Observer
     {
         $config = Mage::helper('janrain_jump/data')->getConfig();
         $config['features'] = array('Core', 'Capture');
-        //$session = Mage::getSingleton('customer/session');
-        //$loggedIn = $session->isLoggedIn();
         $jump = \janrain\Jump::getInstance();
         $jump->init($config);
+        $session = Mage::getSingleton('customer/session');
+        if ($capture = $jump->getFeature('Capture')) {
+            #refresh or destroy the session as needed
+            $this->updateSession($jump);
+            #tell capture about it!
+            $capture->setConfigItem('capture.session', $session->getData('janrain_jump.session'));
+        }
 
-        #setup routes
+        #setup admin route
         $magentoConfig = Mage::getConfig();
         $adminRoute = new Mage_Core_Model_Config_Element('<janrain_jump><use>admin</use><args><module>Janrain_JUMP</module><frontName>jump</frontName></args></janrain_jump>');
         $magentoConfig->getNode('admin/routers')->appendChild($adminRoute);
+    }
+
+    protected function updateSession($jump)
+    {
+        $session = Mage::getSingleton('customer/session');
+        if (!$session->isLoggedIn()) {
+            #not logged into local, set the session to null so capture knows to void the token
+            $session->setData('janrain_jump.session', null);
+            return;
+        }
+        #user is logged in...  check for expired token
+        $jumpSession = $session->getData('janrain_jump.session');
+        $time = time();
+        if (empty($jumpSession) || $time >= $jumpSession->expires) {
+            #session expired, get new token
+            $model = Mage::getModel('janrain_jump/user');
+            $model->load($session->getCustomer()->getId(), 'plex_id');
+            if ($model->getJumpId()) {
+                #plexer found, rock it
+                $jumpSession = $jump->getFeature('Capture')->getApi()->getToken($model->getJumpId());
+            } else {
+                #user logged in with a non-matching plexer? eep null out the capture session and force a new login
+                $jumpSession = null;
+            }
+            $session->setData('janrain_jump.session', $jumpSession);
+        }
     }
 
     public function controller_action_layout_generate_xml_before($observed)
