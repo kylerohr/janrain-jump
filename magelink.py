@@ -35,4 +35,4 @@ symlinker("%s/app/code/local" % current_dir, "%s/app/code/local/" % options.mage
 symlinker("%s/app/design/frontend/base/default/layout" % current_dir, "%s/app/design/frontend/base/default/layout/" % options.magento_path)
 symlinker("%s/app/design/frontend/base/default/template" % current_dir, "%s/app/design/frontend/base/default/template/" % options.magento_path)
 symlinker("%s/app/etc/modules" % current_dir, "%s/app/etc/modules/" % options.magento_path)
-os.symlink("%s/vendor/janrain/plex/lib/janrain" % current_dir, "%s/lib/janrain" % options.magento_path)
+os.symlink("%s/vendor/janrain/plex/src/janrain" % current_dir, "%s/lib/janrain" % options.magento_path)
