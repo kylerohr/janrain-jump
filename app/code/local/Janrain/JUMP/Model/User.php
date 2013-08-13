@@ -8,11 +8,11 @@ class Janrain_JUMP_Model_User extends Mage_Core_Model_Abstract implements Plexer
 {
 
     protected $customer;
+    protected $jumper;
 
     protected function _construct()
     {
         $this->_init('janrain_jump/user');
-        $this->customer = Mage::getModel('customer/customer');
     }
 
     /**
@@ -29,6 +29,16 @@ class Janrain_JUMP_Model_User extends Mage_Core_Model_Abstract implements Plexer
         }
     }
 
+    public function setJumpUser(Jumper $j)
+    {
+        $this->jumper = $j;
+    }
+
+    public function getJumpUser()
+    {
+        return $this->jumper;
+    }
+
     /**
      * Get the customer represented by this Plex User
      *
@@ -38,6 +48,24 @@ class Janrain_JUMP_Model_User extends Mage_Core_Model_Abstract implements Plexer
     public function getCustomer()
     {
         return $this->customer;
+    }
+
+    public function setAttribute($path, $value)
+    {
+        $this->setData($path, $value);
+    }
+    public function getAttribute($path)
+    {
+        return $this->getData($path);
+    }
+    public function hasAttribute($path)
+    {
+        return array_key_exists($this->customer->getAttributes());
+    }
+
+    public function getAttributePaths()
+    {
+        return array_keys($this->customer->getAttributes());
     }
 
     /**
@@ -60,26 +88,51 @@ class Janrain_JUMP_Model_User extends Mage_Core_Model_Abstract implements Plexer
         #
     }
 
+
+
     public function registerAs(Jumper $j)
     {
         $this->setJumpId($j['uuid']);
-        $xfs = '[
-            {"op":"AssignFromJump","j":"email","p":"email"},
-            {"op":"AssignFromJump","j":"givenName","p":"firstname"},
-            {"op":"AssignFromJump","j":"familyName","p":"lastname"}
-            ]';
-        $tx = Transform::loadFromJson($xfs);
-        $tx->map($j, $this);
+        $jsonMap = Mage::getStoreConfig('jump/mapping/json');
+        if ($jsonMap) {
+            $tx = Transform::loadFromJson($jsonMap);
+            $tx->map($j, $this);
+        }
     }
 
     public function save()
     {
         $this->customer->save();
         $this->setPlexId($this->customer->getId());
+        //$this->setJumpProfile($this->jumper->);
         parent::save();
     }
 
-    public function isLoggedIn()
+    public function getSessionItem($key, $default = null)
+    {
+        $session = Mage::getSingleton('customer/session');
+        $out = $session->getData($key);
+        if (!is_null($out)) {
+            return $out;
+        }
+        return $default;
+    }
+
+    public function setSessionItem($key, $value)
+    {
+        if (!$this->getIsLoggedIn()) {
+            throw new \Exception('');
+        }
+        $session = Mage::getSingleton('customer/session');
+        $session->setData($key, $value);
+    }
+
+    public function getIsNew()
+    {
+        return $this->isNew();
+    }
+
+    public function getIsLoggedIn()
     {
         return Mage::getSingleton('customer/session')->isLoggedIn();
     }

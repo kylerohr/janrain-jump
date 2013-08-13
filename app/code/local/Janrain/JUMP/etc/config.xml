@@ -20,6 +20,15 @@
 	<global>
 		<!-- Observer to load the classloader and handle pre-load initialization -->
 		<events>
+			<adminhtml_init_system_config>
+				<observers>
+					<janrain_jump>
+						<type>singleton</type>
+						<class>Janrain_JUMP_Model_Observer</class>
+						<method>adminhtml_init_system_config</method>
+					</janrain_jump>
+				</observers>
+			</adminhtml_init_system_config>
 			<controller_front_init_before>
 				<observers>
 					<janrain_jump>
@@ -38,6 +47,15 @@
 					</janrain_jump>
 				</observers>
 			</controller_action_layout_generate_xml_before>
+			<customer_save_commit_after>
+				<observers>
+					<janrain_jump>
+						<type>singleton</type>
+						<class>Janrain_JUMP_Model_Observer</class>
+						<method>customer_save_commit_after</method>
+					</janrain_jump>
+				</observers>
+			</customer_save_commit_after>
 		</events>
 
 		<blocks>

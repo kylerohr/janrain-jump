@@ -1,20 +1,17 @@
 <?php
-// Set jumpUrl in Magento configuration
-Mage::getModel('core/config')->saveConfig('jump/capture_settings/jumpUrl', 'janrain/jump');
+//Set default options. jumpUrl in Magento configuration
+$mageConfig = Mage::getModel('core/config');
+$mageConfig->saveConfig('jump/capture_settings/jumpUrl', 'customer/account');
 
 // Add Janrain table
 $installer = $this;
 
 $installer->startSetup();
 
-/**
- * from Byron: @todo declare primary key to be [uuid, customer_id] to enforce/enable CaptureExpress mapping and login
- * from Byron: @todo declare foreign key on jump.customer_id -> customer.customer_id so we can maintain referential integrity and update cascades.
- */
 $connection = $installer->getConnection();
 $connection->dropTable('janrain_jump');
 $table = $connection->newTable($installer->getTable('janrain_jump'));
-#add the fake, so we can use
+#add the fake id, so we can use default model loading/saving semantics
 $table->addColumn(
     'magento_id',
     Varien_Db_Ddl_Table::TYPE_INTEGER, 10, array('unsigned' => true, 'primary' => true, 'nullable' => false, 'auto_increment' => true));
@@ -26,6 +23,9 @@ $table->addColumn(
     Varien_Db_Ddl_Table::TYPE_CHAR, 40, array('nullable' => false));
 $table->addColumn(
     'engage_ids',
+    Varien_Db_Ddl_Table::TYPE_TEXT, null, array('nullable' => true));
+$table->addColumn(
+    'profile',
     Varien_Db_Ddl_Table::TYPE_TEXT, null, array('nullable' => true));
 
 #add unique indexes
